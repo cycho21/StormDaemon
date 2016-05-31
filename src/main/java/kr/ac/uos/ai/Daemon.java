@@ -10,7 +10,7 @@ package kr.ac.uos.ai;
 public class Daemon {
 
     public Daemon() {
-
+        JSONGetter jsonGetter = new JSONGetter();
     }
 
     public static void main(String[] args) {

@@ -2,6 +2,8 @@ package kr.ac.uos.ai;
 
 import org.apache.commons.io.FileUtils;
 
+import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -18,8 +20,21 @@ public class JSONGetter {
     }
 
     private void start() {
-        URL url = new URL("http://i.imgur.com/pV8kUBK.jpg");
-        FileUtils.copyURLToFile("http://i.imgur.com/pV8kUBK.jpg", "f:/abc.jpg");
+        try {
+            File file = new File("F:/test.jpg");
+            URL url = new URL("http://i.imgur.com/pV8kUBK.jpg");
+//            FileOutputStream os = new FileOutputStream(file);
+//            InputStream dl = url.openStream();
+            FileUtils.copyURLToFile(url, file);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 
