@@ -16,12 +16,9 @@ import java.util.Date;
 
 public class Daemon {
 
-    public Daemon() {
+    public Daemon(String[] args) {
         JSONGetter jsonGetter = new JSONGetter();
         jsonGetter.test();
-
-        CustomJSONParser customJSONParser = new CustomJSONParser();
-        customJSONParser.parse("F:/distributedcomputing/StormDaemon/2016-05-31-15.json");
 
         JobDetail job = new JobDetail();
         job.setName("JSON_update");
@@ -48,6 +45,11 @@ public class Daemon {
     }
 
     public static void main(String[] args) {
-        new Daemon();
+        if(args != null) {
+            new Daemon(args);
+        } else {
+            System.out.println("java -jar StormDaemon.jar \"temporary JSON directory path\"");
+            System.exit(0);
+        }
     }
 }

@@ -4,14 +4,12 @@ import org.apache.commons.io.FileUtils;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.zip.GZIPInputStream;
 
 /**
@@ -43,6 +41,7 @@ public class JSONGetter implements Job {
             File file = new File(date+ "-15.json.gz");
             URL url = new URL(urlString);
             FileUtils.copyURLToFile(url, file);
+            gzUnpack();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
@@ -96,9 +95,13 @@ public class JSONGetter implements Job {
 
             System.out.println("unpacking done");
 
+            System.out.println("analysis start");
+
+            CustomJSONParser customJSONParser = new CustomJSONParser();
+            customJSONParser.parse(date + "-15.json");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
