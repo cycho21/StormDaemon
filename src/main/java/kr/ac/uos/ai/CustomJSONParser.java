@@ -49,6 +49,7 @@ public class CustomJSONParser {
 
     public void parse2data(String unparsedString) {
         Object obj = null;
+
         try {
             obj = jsonParser.parse(unparsedString);
             jsonObject = (JSONObject) obj;

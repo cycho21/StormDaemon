@@ -78,7 +78,6 @@ public class JSONGetter implements Job {
     }
 
     public void gzUnpack() {
-
         byte[] buffer = new byte[1024];
         try {
             GZIPInputStream gzis = new GZIPInputStream(new FileInputStream(date + "-15.json.gz"));
